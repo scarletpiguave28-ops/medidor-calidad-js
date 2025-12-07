@@ -1,0 +1,21 @@
+name: Medir calidad con ESLint
+
+on: [push]
+
+jobs:
+  revisar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. Descargar el código
+        uses: actions/checkout@v4
+
+      - name: 2. Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: 3. Instalar ESLint
+        run: npm install --save-dev eslint
+
+      - name: 4. Ejecutar análisis
+        run: npx eslint calculadora.js
